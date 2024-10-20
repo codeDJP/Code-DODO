@@ -1,5 +1,5 @@
 .u-section-1 .u-sheet-1 {
-  min-height: 424px;
+  min-height: 437px;
 }
 
 .u-section-1 .u-text-1 {
@@ -10,13 +10,11 @@
 
 .u-section-1 .u-text-2 {
   font-size: 1rem;
-  margin: 75px auto 0;
+  margin: 75px auto 60px;
 }
 
-.u-section-1 .u-icon-1 {
-  width: 49px;
-  height: 49px;
-  margin: 10px auto 60px 106px;
+.u-section-1 .u-btn-1 {
+  background-image: none;
   padding: 0;
 }
 
@@ -27,14 +25,14 @@
 
   .u-section-1 .u-text-1 {
     width: auto;
-    margin-top: 71px;
+    margin-top: 86px;
     margin-left: 0;
     margin-right: 0;
   }
 
   .u-section-1 .u-text-2 {
     width: auto;
-    margin-top: 87px;
+    margin-top: 109px;
     margin-left: 0;
     margin-right: 0;
   }

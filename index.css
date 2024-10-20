@@ -5,6 +5,20 @@
 .u-section-1 .u-icon-1 {
   width: 49px;
   height: 49px;
-  margin: 533px auto 60px 91px;
+  box-shadow: 2px 0 0 0 rgba(0,0,0,0);
+  margin: 533px auto 60px 138px;
   padding: 0;
+}
+
+@media (max-width: 991px) {
+  .u-section-1 .u-icon-1 {
+    margin-top: 513px;
+    margin-left: 122px;
+  }
+}
+
+@media (max-width: 575px) {
+  .u-section-1 .u-icon-1 {
+    margin-left: 60px;
+  }
 }
