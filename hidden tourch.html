@@ -12,21 +12,23 @@
             height: 100%;
             width: 100%;
             background-color: black;
-            position: relative;
+            font-family: 'Montserrat', sans-serif;
             overflow: hidden;
-            font-family: 'Montserrat', sans-serif; /* Modern font */
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .torch {
             position: absolute;
             background-image: url('https://5.imimg.com/data5/SELLER/Default/2023/1/KJ/JI/NX/41615788/led-torch-lights-500x500.jpg');
-            background-size: contain; /* Maintain original aspect ratio */
-            background-repeat: no-repeat; /* Prevent tiling */
+            background-size: contain;
+            background-repeat: no-repeat;
+            width: 200px;
+            height: 200px;
             cursor: pointer;
-            opacity: 0; /* Make the torch invisible initially */
-            transition: opacity 0.5s; /* Smooth transition for visibility */
-            width: 500px;
-            height: 500px;
+            opacity: 0;
+            transition: opacity 0.5s;
         }
 
         .message {
@@ -36,7 +38,6 @@
             transform: translateX(-50%);
             color: white;
             font-size: 24px;
-            opacity: 1;
             text-align: center;
         }
 
@@ -45,7 +46,7 @@
             color: black;
             font-size: 24px;
             opacity: 0;
-            transition: opacity 0.5s; /* Smooth transition for visibility */
+            transition: opacity 0.5s;
             cursor: pointer;
         }
 
@@ -67,34 +68,28 @@
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const torch = document.getElementById("torch");
-            const message = document.getElementById("message");
             const exploreText = document.getElementById("exploreText");
 
-            // Function to generate random positions for the torch
             const randomPosition = () => {
-                const torchWidth = 500; // Original width of the torch image
-                const torchHeight = 500; // Original height of the torch image
-                const x = Math.random() * (window.innerWidth - torchWidth); // Random x coordinate
-                const y = Math.random() * (window.innerHeight - torchHeight); // Random y coordinate
+                const torchSize = torch.offsetWidth;
+                const x = Math.random() * (window.innerWidth - torchSize);
+                const y = Math.random() * (window.innerHeight - torchSize);
                 torch.style.left = `${x}px`;
                 torch.style.top = `${y}px`;
-                exploreText.style.left = `${x + (torchWidth / 2) - 50}px`; // Position the text near the torch
-                exploreText.style.top = `${y + torchHeight}px`; // Place it below the torch
+                exploreText.style.left = `${x + torchSize / 2 - 50}px`;
+                exploreText.style.top = `${y + torchSize}px`;
             };
 
-            // Set random position on page load
-            randomPosition();
+            randomPosition(); // Set random position on page load
 
-            // When the torch is clicked
             torch.addEventListener("click", () => {
-                document.body.style.backgroundColor = "white"; // Change background to white
-                torch.style.opacity = "1"; // Make the torch visible
-                exploreText.classList.add('visible'); // Make the "Let's explore" text visible
+                document.body.style.backgroundColor = "white";
+                torch.style.opacity = "1";
+                exploreText.classList.add('visible');
             });
 
-            // Click event on "Let's explore!" text to navigate to a new site
             exploreText.addEventListener("click", () => {
-                window.location.href = "https://www.example.com"; // Replace with desired URL
+                window.location.href = "https://www.example.com"; // Replace with your URL
             });
         });
     </script>
