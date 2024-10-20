@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hidden Torch Game</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet"> <!-- Google Font -->
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            background-color: black;
+            position: relative;
+            overflow: hidden;
+            font-family: 'Montserrat', sans-serif; /* Modern font */
+        }
+
+        .torch {
+            position: absolute;
+            background-image: url('https://5.imimg.com/data5/SELLER/Default/2023/1/KJ/JI/NX/41615788/led-torch-lights-500x500.jpg');
+            background-size: contain; /* Maintain original aspect ratio */
+            background-repeat: no-repeat; /* Prevent tiling */
+            cursor: pointer;
+            opacity: 0; /* Make the torch invisible initially */
+            transition: opacity 0.5s; /* Smooth transition for visibility */
+            width: 500px;
+            height: 500px;
+        }
+
+        .message {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 24px;
+            opacity: 1;
+            text-align: center;
+        }
+
+        .explore-text {
+            position: absolute;
+            color: black;
+            font-size: 24px;
+            opacity: 0;
+            transition: opacity 0.5s; /* Smooth transition for visibility */
+            cursor: pointer;
+        }
+
+        .visible {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Initial top-centered message -->
+    <div class="message" id="message">If you need to explore, find the hidden torch!</div>
+    
+    <!-- Torch -->
+    <div class="torch" id="torch"></div>
+
+    <!-- Appearing text near the torch after clicking -->
+    <div class="explore-text" id="exploreText">Let's explore!</div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const torch = document.getElementById("torch");
+            const message = document.getElementById("message");
+            const exploreText = document.getElementById("exploreText");
+
+            // Function to generate random positions for the torch
+            const randomPosition = () => {
+                const torchWidth = 500; // Original width of the torch image
+                const torchHeight = 500; // Original height of the torch image
+                const x = Math.random() * (window.innerWidth - torchWidth); // Random x coordinate
+                const y = Math.random() * (window.innerHeight - torchHeight); // Random y coordinate
+                torch.style.left = `${x}px`;
+                torch.style.top = `${y}px`;
+                exploreText.style.left = `${x + (torchWidth / 2) - 50}px`; // Position the text near the torch
+                exploreText.style.top = `${y + torchHeight}px`; // Place it below the torch
+            };
+
+            // Set random position on page load
+            randomPosition();
+
+            // When the torch is clicked
+            torch.addEventListener("click", () => {
+                document.body.style.backgroundColor = "white"; // Change background to white
+                torch.style.opacity = "1"; // Make the torch visible
+                exploreText.classList.add('visible'); // Make the "Let's explore" text visible
+            });
+
+            // Click event on "Let's explore!" text to navigate to a new site
+            exploreText.addEventListener("click", () => {
+                window.location.href = "https://www.example.com"; // Replace with desired URL
+            });
+        });
+    </script>
+</body>
+</html>
